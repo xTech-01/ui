@@ -1,12 +1,23 @@
-# Atari 2600 (Stella) support for multiple assemblers
-# - DASM
-# - CC65
+node_modules
 
-# Assembled binaries and object directories
-obj/
-a.out
-*.bin
-*.a26
+# Output
+.output
+.vercel
+.netlify
+.wrangler
+/.svelte-kit
+/build
 
-# Add in special Atari 7800-based binaries for good measure
-*.a78
+# OS
+.DS_Store
+Thumbs.db
+
+# Env
+.env
+.env.*
+!.env.example
+!.env.test
+
+# Vite
+vite.config.js.timestamp-*
+vite.config.ts.timestamp-*

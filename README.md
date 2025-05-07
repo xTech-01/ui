@@ -1,1 +1,6 @@
-# ui
+### dev
+
+`./live.sh`
+
+
+### deploy
