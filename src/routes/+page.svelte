@@ -7,17 +7,16 @@
 
 
 <svelte:head>
-    <link rel="preload" as="image" href={Service[0]} />
+    <!-- <link rel="preload" as="image" href={Service[0]} /> -->
 </svelte:head>
-
 
 
 <section class="dark" id="hero">
     <div class="container">
         <h1>Service</h1>
-        <h2 class='muted'>Upgrade</h2>
+        <h2 class='muted'>Upg</h2>
         <Grid columns={2} rowGap='3rem'>
-            <img src={Service} loading="lazy" alt="Service" />
+            <!-- <img src={Service} loading="lazy" alt="Service" /> -->
         <div class="mb-2">
 
         </div>

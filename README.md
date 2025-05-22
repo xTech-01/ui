@@ -1,6 +1,6 @@
 ### dev
 
-`./live.sh`
+`./dev.sh`
 
 
 ### deploy
