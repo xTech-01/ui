@@ -5,16 +5,17 @@ export const cart = $state({
 });
 
 export const cartId = $state({
-    val: browser ? window.localStorage.getItem('cartId') : '',
+    val: browser ? window.localStorage.getItem('cartId') : ''
 })
 
 
 export const showCart = $state({
-    bool:false,
+    bool:false
 });
 
 export const cartTotalQuantity = $state({
     val: browser ? window.localStorage.getItem('cartTotalQuantity') : '',
+    // val: 1,
 })
 
 if (browser) {

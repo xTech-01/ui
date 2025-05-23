@@ -2,13 +2,19 @@
     import '../app.css';
 
     import MonumentExtendedBlack from "$lib/fonts/MonumentExtended/MonumentExtended-Black.woff2";
+    import "@fontsource-variable/inter";
+    import "@fontsource-variable/jetbrains-mono";
 
     import { page } from "$app/state";
+
+    import Grid from "$lib/components/Grid.svelte";
 
     import HeaderMenu from "$lib/components/HeaderMenu.svelte";
     import HeaderBanner from "$lib/components/HeaderBanner.svelte";
 
-    import Grid from "$lib/components/Grid.svelte";
+    import BasketIcon from "$lib/icons/basket.svg?raw";
+    import CartIcon from "$lib/icons/cart.svg?raw";
+    import ArrowRightIcon from "$lib/icons/arrow-right.svg?raw";
 
     import {
       cartId,
@@ -69,12 +75,20 @@
       <a href="/jobs">jobs</a>
     </nav>
     <div class="navbar-section-buttons">
-      <a class="login" href="/login">
-        login
+      <a class="login" href="/service">
+        {@html BasketIcon}
+        service
       </a>
-
+       {#if cartTotalQuantity}
+        <button>
+          {@html CartIcon}
+          <div class="cart-text">cart </div>
+        </button>
+        {/if}
     </div>
   </div>
+
+
 </header>
 
 <HeaderBanner />
@@ -85,13 +99,16 @@
 
 <footer>
   <div class="container">
-    <Grid columns={1} wrapMode="single" alignItems="start" size="large">
+    <Grid columns={2} wrapMode="none" alignItems="start" size="large">
       <div class="footer-links">
-        <strong>Product</strong>
-        <a href="/service">service</a>
+        <strong>Service</strong>
+        <a href="/service">service1</a>
           <span>LOGO</span>
           <!-- <Badge style="light" diplay="inline">new</Badge> -->
-        <a class="badged" href="/blog">blog</a>
+      </div>
+      <div class="footer-links">
+        <strong>Company</strong>
+        <a href="/blog">blog</a>
         <a href="/jobs">jobs</a>
       </div>
     </Grid>
@@ -124,6 +141,42 @@
       display: flex;
       align-items: stretch;
       justify-content: space-between;
+    }
+
+    .navbar-section-logo {
+      flex-direction: row-reverse;
+      align-items: center;
+      display: flex;
+      border-right: 1px solid #000;
+
+      & > .title {
+        font-family: "Monument Extended Black", sans-serif;
+        font-size: 20px;
+        color: #000;
+        height:20px;
+        text-transform: uppercase;
+        padding: 0 2rem;
+      }
+
+      @media only screen and (max-width: 480px) {
+        border-right: none;
+      }
+
+      @media only screen and (max-width: 480px) {
+        flex: 1;
+
+        & > .title {
+          display: flex;
+          flex: 1;
+          justify-content: center;
+        }
+      }
+
+      @media only screen and (max-width: 375px) {
+        & > .title {
+          padding: 0 0.25rem;
+        }
+      }
     }
 
     .navbar-section-links {
@@ -181,6 +234,23 @@
           font-size: 1rem;
           font-weight: 600;
         }
+
+        & a {
+          color: #fff;
+          font-size: 1.25rem;
+          transition: opacity 0.2s;
+        }
+
+        @media (hover: hover) and (pointer: fine) {
+          & a:hover {
+            opacity: 0.65;
+          }
+        }
+
+        & a:active {
+          opacity: 0.65;
+        }
+
       }
     }
 </style>
