@@ -1,13 +1,13 @@
 <script>
-    import Grid from "$lib/components/Grid.svelte";
-    import LinkButton from "$lib/components/LinkButton.svelte";
-    import Badge from "$lib/components/Badge.svelte";
-    import Faq from "$lib/components/Faq.svelte";
-    import { faq } from "$lib/constants/faq.svelte";
+    import Grid from '$lib/components/Grid.svelte';
+    import LinkButton from '$lib/components/LinkButton.svelte';
+    import Badge from '$lib/components/Badge.svelte';
+    import Faq from '$lib/components/Faq.svelte';
+    import { faq } from '$lib/constants/faq.svelte';
 
-    import GoogleImg from "$lib/images/google-logo.png";
-    import service1Icon from "$lib/icons/features/s1s.svg?raw";
-    import service2Icon from "$lib/icons/features/s2s.svg?raw";
+    import GoogleImg from '$lib/images/google-logo.webp';
+    import service1Icon from '$lib/icons/features/s1s.svg?raw';
+    import service2Icon from '$lib/icons/features/s2s.svg?raw';
 </script>
 
 
@@ -19,12 +19,12 @@
 <section class="dark" id="hero">
     <div class="container">
         <h1>hero h1</h1>
-        <h2 class='muted'>h2 muted</h2>
+        <h2 class='muted'>hero h2</h2>
         <Grid columns={2} rowGap="3rem">
             <img 
                 src={GoogleImg} 
                 loading="lazy" 
-                alt="x service" 
+                alt="service x" 
             />
              <div>
                 <div class="mb-2">
@@ -32,6 +32,22 @@
                         <div class="feature-item">
                             {@html service1Icon}
                             <span>feature <br /> span1</span>
+                        </div>
+                        <div class="feature-item">
+                            {@html service2Icon}
+                            <span>feature<br /> span2</span>
+                        </div>
+                        <div class="feature-item">
+                            {@html service2Icon}
+                            <span>feature<br /> span3</span>
+                        </div>
+                        <div class="feature-item">
+                            {@html service2Icon}
+                            <span>feature<br /> span2</span>
+                        </div>
+                        <div class="feature-item">
+                            {@html service2Icon}
+                            <span>feature<br /> span2</span>
                         </div>
                         <div class="feature-item">
                             {@html service2Icon}
@@ -81,24 +97,24 @@
 
 <section class="light" id="faq">
     <div class="container">
-        <Faq topic={faq.service} title="Frequently asked questions" />
+        <Faq topic={faq.service} title="FAQs" />
     </div>
 </section>
 
 <style>
     #hero {
-        & img {
+        & .feature-item :global {
+            align-items: center;
+            display: flex;
+            color: #fff;
+
+            & img {
                 border: 1px solid #000;
                 width: 52px;
                 margin-right: 0.5rem;
                 padding: 0.375rem;
                 display: inline-block;
             }
-
-        & .feature-item {
-            align-items: center;
-            display: flex;
-            color: #fff;
 
             & span {
                 color: var(--color-muted);

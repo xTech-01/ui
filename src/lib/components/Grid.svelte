@@ -1,13 +1,18 @@
 <script>
     export let columns = 2;
+    export let alignItems = "flex-start";
     export let columnGap = "3rem";
     export let rowGap = "1.5rem";
-    export let wrapMode = "none";
-    export let alignItems = "flex-start";
+    
     export let size = "medium";
+    export let wrapMode = "half";
 
     export let templateColumns = "repeat(var(--columns), 1fr)";
+
+    export let lgColumnGap;
+    export let lgTemplateColumns;
 </script>
+
 
 <div
     class="grid"
@@ -16,12 +21,16 @@
     class:large={size === "large"}
     style="
         --columns: {columns};
+        --align-items: {alignItems};
         --column-gap: {columnGap};
         --row-gap: {rowGap};
         --wrpped-columns: {wrapMode === 'single' ? 1 : (wrapMode === 'half' ? Math.ceil(columns / 2) : columns)};
-        --align-items: {alignItems};
         --template-columns: {templateColumns};
-    ">
+
+        --lg-column-gap: {lgColumnGap ?? columnGap};
+        --lg-template-columns: {lgTemplateColumns ?? templateColumns};
+    "
+    >
     <slot></slot>
 </div>
 
@@ -43,7 +52,7 @@
         }
     }
 
-    @media (max-width: 780px) {
+    @media (max-width: 768px) {
         .grid.medium {
             grid-template-columns: repeat(var(--wrapped-columns), 1fr);
         }

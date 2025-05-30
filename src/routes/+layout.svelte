@@ -1,20 +1,20 @@
 <script>
     import '../app.css';
 
-    import MonumentExtendedBlack from "$lib/fonts/MonumentExtended/MonumentExtended-Black.woff2";
-    import "@fontsource-variable/inter";
-    import "@fontsource-variable/jetbrains-mono";
+    import MonumentExtendedBlack from '$lib/fonts/MonumentExtended/MonumentExtended-Black.woff2';
+    import '@fontsource-variable/inter';
+    import '@fontsource-variable/jetbrains-mono';
 
-    import { page } from "$app/state";
+    import { page } from '$app/state';
 
-    import Grid from "$lib/components/Grid.svelte";
+    import Grid from '$lib/components/Grid.svelte';
 
-    import HeaderMenu from "$lib/components/HeaderMenu.svelte";
-    import HeaderBanner from "$lib/components/HeaderBanner.svelte";
+    import HeaderMenu from '$lib/components/HeaderMenu.svelte';
+    import HeaderBanner from '$lib/components/HeaderBanner.svelte';
 
-    import BasketIcon from "$lib/icons/basket.svg?raw";
-    import CartIcon from "$lib/icons/cart.svg?raw";
-    import ArrowRightIcon from "$lib/icons/arrow-right.svg?raw";
+    import BasketIcon from '$lib/icons/basket.svg?raw';
+    import CartIcon from '$lib/icons/cart.svg?raw';
+    import ArrowRightIcon from '$lib/icons/arrow-right.svg?raw';
 
     import {
       cartId,
@@ -70,25 +70,24 @@
       </div>
     </div>
     <nav class="navbar-section-links">
-      <a href="/service">navbar</a>
+      <a href="/service">x</a>
       <a href="/blog">blog</a>
       <a href="/jobs">jobs</a>
+      <a href="/support">support</a>
     </nav>
     <div class="navbar-section-buttons">
-      <a class="login" href="/service">
+      <a class="button service" href="/service">
         {@html BasketIcon}
         service
       </a>
-       {#if cartTotalQuantity}
+       <!-- {#if cartTotalQuantity}
         <button>
           {@html CartIcon}
           <div class="cart-text">cart </div>
         </button>
-        {/if}
+        {/if} -->
     </div>
   </div>
-
-
 </header>
 
 <HeaderBanner />
@@ -102,7 +101,7 @@
     <Grid columns={2} wrapMode="none" alignItems="start" size="large">
       <div class="footer-links">
         <strong>Service</strong>
-        <a href="/service">service1</a>
+        <a href="/service">service x</a>
           <span>LOGO</span>
           <!-- <Badge style="light" diplay="inline">new</Badge> -->
       </div>
@@ -197,6 +196,65 @@
           display: None;
         }
       }
+    }
+
+    .navbar-section-buttons {
+      display: flex;
+
+      /* & .cart, & .service { */
+      .service :global {
+        border: none;
+
+        & svg {
+          margin-right: 0.5rem;
+        }
+      }
+
+      & .button {
+        color: #000;
+        text-transform: uppercase;
+        font-family: Inter, sans-serif;
+        border-left: 1px solid #000;
+        padding-left: 56px;
+        padding-right: 56px;
+        font-size: 1rem;
+        font-weight: 700;
+        letter-spacing: 1px;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        background-color: var(--color-accent);
+
+        @media (hover: hover) and (pointer: fine) {
+          &:hover {
+            background-color: var(--color-accent-hover);
+          }
+        }
+        &:active {
+          background-color: var(--color-accent-hover);
+        }
+      }
+
+      @media only screen and (max-width: 768px) {
+        &.navbar-section-buttons > :first-child:not(:only-child) {
+          display: none;
+        }
+
+        & .cart .cart-text {
+          display: none;
+        }
+
+        & .cart {
+          padding-left: 25px;
+          padding-right: 25px;
+        }
+
+        & .service {
+          padding-left: 10px;
+          padding-right: 10px;
+        }
+      }
+
     }
 
     footer {
