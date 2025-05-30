@@ -1,13 +1,15 @@
-<script>
+<script lang="ts">
+    import { posts } from './posts.js';
 
+    let { data } = $props();
 </script>
 
 <section class="dark" id="blog">
     <h1>blog</h1>
-</section>
 
-<style>
-    section {
-        background-color: unset;
-    }
-</style>
+    <ul>
+        {#each data.summaries as { slug, title }}
+            <li><a href="/blog/{slug}">{title}</a></li>
+        {/each}
+    </ul>
+</section>
