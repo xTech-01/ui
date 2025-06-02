@@ -1,0 +1,44 @@
+name: Build
+
+on:
+  # push:
+  #   branches:
+  #     - main
+  # pull_request:
+  # workflow_dispatch: 
+
+permissions:
+  checks: write
+  contents: read
+  pull-requests: write
+
+jobs:
+  test:
+    name: Run tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+
+      - run: bun install --frozen-lockfile
+      - run: bun test
+
+  build:
+    name: Build site
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - run: bun install --frozen-lockfile
+
+      - if: github.event_name != 'pull_request' && github.ref == 'ref/heads/main'
+        name: Build (prod)
+        run: bun run build
+        env: 
+
+      - if: github.event_name == 'pull_request' || github.ref != 'ref/heads/main'
+        name: Build (dev)
+        run: bun run build
+
+      - name: Deploy
+        if: github.event_name == 'push' && github.ref == 'ref/heads/main'

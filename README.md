@@ -1,6 +1,6 @@
-### dev
+## dev
+    `./dev.sh`
 
-`./dev.sh`
+## deploy
 
-
-### deploy
+    ``
