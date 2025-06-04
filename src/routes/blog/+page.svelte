@@ -1,6 +1,4 @@
 <script lang="ts">
-    import { posts } from './posts.js';
-
     let { data } = $props();
 </script>
 
